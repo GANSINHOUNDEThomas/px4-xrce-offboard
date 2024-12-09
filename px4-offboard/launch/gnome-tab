@@ -1,0 +1,4 @@
+# gnome-terminal --tab -t MicroXrce -- MicroXRCEAgent udp4 -p 8888
+# gnome-terminal --tab -t Supervision -- python3 /root/ros_ws/src/supervision.py
+gnome-terminal --tab -t Gazebo -- bash -c "cd ~/PX4-Autopilot && make px4_sitl gazebo-classic_x500 -j$(nproc)"
+            
