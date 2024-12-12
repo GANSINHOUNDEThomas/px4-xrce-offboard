@@ -1,0 +1,14 @@
+docker run -it --privileged \
+  --env=LOCAL_USER_ID="$(id -u)" \
+  -v ./src:/root/ros_ws:rw \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  -v ./terminator_config:/root/.config/terminator/config \
+  -e DISPLAY=$DISPLAY \
+  -e NVIDIA_DRIVER_CAPABILITIES=all \
+  --network host \
+  --device=/dev/dri \
+  --runtime=nvidia --gpus all \
+  --device-cgroup-rule='c 13:* rmw' \
+  --device-cgroup-rule='c 81:* rmw' \
+  --device-cgroup-rule='c 189:* rmw' \
+  --name=docker_nvidia my-px4-humble:latest
